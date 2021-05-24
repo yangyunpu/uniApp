@@ -11,14 +11,5 @@ import request from '@/config/common.js'
 			// 传入的data对象  {ip:'xxxxxx'}; 
 			return request.post("/merchantInfo/getMerchantInfo",data);
 		},
-		// put请求
-		putData(data){
-			// 传入的data对象  {ip:'xxxxxx'}; 
-			return request.put("/ip/getIpInfo.php",data);
-		},
-		// delete请求
-		deleteData(data){
-			// 传入的data对象  {ip:'xxxxxx'}; 
-			return request.delete("/ip/getIpInfo.php",data);
-		}
+		
 	} 

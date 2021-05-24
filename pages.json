@@ -7,7 +7,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "uni-app",
+				"enablePullDownRefresh": true // 开启下拉刷新
 			}
 		}
 	    ,{
@@ -24,7 +25,13 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "我的",
-                "enablePullDownRefresh": false // 是否下拉刷新
+                "enablePullDownRefresh": false //是否下拉刷新
+				// "app-plus":{
+				// 	"titleNView":false    //去掉当前页的顶部导航栏
+				// },
+				// "navigationBarBackgroundColor":"#FFFFFF" //自定义的背景颜色
+				// "navigationBarTextStyle":"white"  //状态栏字体颜色
+
             }
             
         }
@@ -37,12 +44,31 @@
             }
             
         }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "安全设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/editInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#FFFFFF", // 导航栏背景颜色
+		"backgroundColor": "#F8F8F8", // 窗口的背景色
+		"backgroundColorTop":"#FFFFFF" // 仅iOS APP真机bounce回弹区域默认灰色,建议统一重置为白色
 	},
 	"tabBar" : {
 	    "color" : "#707070",

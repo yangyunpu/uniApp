@@ -12,6 +12,7 @@ Vue.use(uView);
 // 判断是否登录，存在token
 Vue.prototype.checkLogin = function(){
 	const token = uni.getStorageSync('token')
+	console.log('token',token)
 	if(token === ''){ // 本地没有token表示未登录
 		console.log('未登录返回到登录页')
 		uni.reLaunch({url:'/pages/login/login'})

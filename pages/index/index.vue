@@ -4,8 +4,8 @@
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view> -->
-		<u-button type="success">
-			<text>{{title}} 框架真好</text>
+		<u-button type="success" @click="getData">
+			<text>{{title}}</text>
 			<u-icon name="thumb-up-fill" color="#ffffff" size="28"></u-icon>
 		</u-button>
 
@@ -23,11 +23,12 @@
 		onLoad() {
 			// 是否登录
 			var loginRes = this.checkLogin();
-			if (!loginRes) {
-				return false;
-			}
+			// 此处感觉没意义
+			// if (!loginRes) {
+			// 	return false;
+			// }
 
-			this.getData()
+			// this.getData()
 			this.postData()
 		},
 		methods: {
@@ -41,8 +42,7 @@
 			},
 			postData() {
 				const  data={
-					name: "nust-app",
-					key: "1",
+					merchantInfoId: 600,
 				}
 				TestApi.postData(data).then(res => {
 					console.log('post请求---',res);
@@ -50,11 +50,18 @@
 					console.log(error);
 				});
 			},
+			// 下拉刷新
+			onPullDownRefresh() {
+				console.log('下拉刷新');
+				setTimeout(function () {
+					uni.stopPullDownRefresh();
+				}, 1000);
+			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.content {
 		display: flex;
 		flex-direction: column;
