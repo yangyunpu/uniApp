@@ -1,6 +1,18 @@
 <template>
 	<view>
-		
+		<!-- 默认导航 -->
+		<!-- <u-navbar :is-back="false" title="写作" :title-bold="true" title-size="32" title-color="#000">
+			<view class="slot-wrap" slot="right" style="padding-right: 20rpx;">
+				<u-icon name="chat" size="50"></u-icon>
+			</view>
+		</u-navbar> -->
+		<!-- 自定义标题内容 -->
+		<u-navbar >
+			<view class="slot-wrap" slot="" style="margin: 0 auto;font-size: 16px;color: #000000;font-weight: 800;">我的</view>
+			<view class="slot-wrap" slot="right" style="padding-right: 20rpx;" @click="goCity">
+				<u-icon name="chat" size="50"></u-icon>
+			</view>
+		</u-navbar>
 		<mescroll-body ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption">
 			<!-- //  @init="mescrollInit" @down="downCallback" @up="upCallback"为固定值,不可删改(与mescroll-mixins保持一致) 
 			 // :down="downOption" :up="upOption" 绝大部分情况无需配置 
@@ -67,6 +79,10 @@ export default {
 		getDate() {
 			console.log("初始化成功")
 		},
+		// 去城市选择页
+		goCity() {
+			uni.navigateTo({url:'/pages/index/city'})
+		}
 	}
 }
 </script>

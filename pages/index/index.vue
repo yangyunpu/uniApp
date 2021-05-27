@@ -1,15 +1,37 @@
 <template>
-	<view class="content">
-		<!-- <image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view> -->
-		<u-button type="success" @click="getData">
-			<text>{{title}}</text>
-			<u-icon name="thumb-up-fill" color="#ffffff" size="28"></u-icon>
-		</u-button>
-
+	<view class="page">
+		<uni-nav-bar 
+			background-color="#0c73fe" 
+			color="#fff" 
+			:status-bar="status_bar" 
+			:title="nav_title"
+			@clickLeft="clickNavLeft()"
+			@clickRight="clickNavRight()">
+			<!-- 导航栏左侧插槽 -->
+			<view slot="left">left</view>
+			<!-- 右侧插槽 -->
+			<view slot="right">right</view>
+		</uni-nav-bar>
+		<view class="content">
+			<!-- <image class="logo" src="/static/logo.png"></image>
+			<view class="text-area">
+				<text class="title">{{title}}</text>
+			</view> -->
+			<u-button type="success" @click="getData">
+				<text>{{title}}</text>
+				<u-icon name="thumb-up-fill" color="#ffffff" size="28"></u-icon>
+			</u-button>
+			<view>
+				{{datalist}}
+			</view>
+			<u-button type="success" @click="goScan">
+				<text>扫码</text>
+			</u-button>
+		
+		</view>
+	
 	</view>
+	
 </template>
 
 <script>
@@ -17,7 +39,12 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				// 导航栏文字
+				nav_title:'首页',
+				// 是否包含状态栏
+				status_bar:true,
+				title: 'Hello',
+				datalist: []
 			}
 		},
 		onLoad() {
@@ -30,8 +57,26 @@
 
 			// this.getData()
 			this.postData()
+			this.GetLOcation()
 		},
 		methods: {
+			// 点击导航栏左侧
+			clickNavLeft(){
+				uni.showToast({
+					title:'点击导航栏左侧',
+					duration: 1500,
+					icon:'none'
+				});
+			},
+			// 点击导航栏右侧
+			clickNavRight(){
+				uni.showToast({
+					title:'点击导航栏右侧',
+					duration: 1500,
+					icon:'none'
+				});
+			},
+
 			getData() {
 				// var data={id:'xxxxxxx'}
 				TestApi.getData().then(res => {
@@ -48,6 +93,23 @@
 					console.log('post请求---',res);
 				}).catch(error=>{
 					console.log(error);
+				});
+			},
+			// 去扫码页
+			goScan() {
+				uni.navigateTo({url:'/pages/setting/scan'})
+			},
+			//获取位置
+			GetLOcation() {
+				uni.getLocation({
+					type: 'gcj02',
+					geocode:true,
+					success: (res) => {
+						console.log('定位',res)
+						this.datalist = res
+						var latitude = parseFloat(res.latitude);
+						var longitude = parseFloat(res.longitude);
+					}
 				});
 			},
 			// 下拉刷新

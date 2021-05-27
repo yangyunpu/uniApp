@@ -3,6 +3,10 @@ import App from './App'
 import uView from "uview-ui";
 Vue.use(uView);
 
+// 自定义导航栏组件
+import uniNavBar from "@/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"
+// 将自定义导航栏组件注册为全局组件
+Vue.component('uni-nav-bar',uniNavBar)
 
  //引入全局请求插件
 // import { http,api } from '@/config/common.js' // 全局挂载引入，配置相关在该index.js文件里修改

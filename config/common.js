@@ -12,11 +12,11 @@ import qs from 'qs'
 let apiBaseUrl = ''
 if(process.env.NODE_ENV === 'production'){
 	// 正式环境
-	apiBaseUrl = 'http://118.190.106.222:8601/admin'
+	apiBaseUrl = 'https://test.bjtjgn.com/admin'
 }else{
 	// 测试环境  process.env.NODE_ENV === 'test'
 	console.log("测试环境")
-	apiBaseUrl = 'http://118.190.106.222:8601/admin'
+	apiBaseUrl = 'https://test.bjtjgn.com/admin'
 }
 
 const http = new Request({

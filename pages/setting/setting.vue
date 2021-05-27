@@ -16,6 +16,7 @@ export default {
 		// 是否登录
 		var loginRes = this.checkLogin();
 		this.postData()
+		this.getData()
 	},
 	methods: {
 		getData() {
